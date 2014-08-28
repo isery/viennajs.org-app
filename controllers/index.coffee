@@ -1,4 +1,4 @@
-getMessage = require('../lib/message').getMessage
+getMessage = require('../libs/message').getMessage
 OAuth = require('oauthio')
 app = require('../')
 oauthioSettings = app.get('oauthio')
