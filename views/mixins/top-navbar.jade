@@ -1,0 +1,54 @@
+mixin top-navbar
+    div#head-nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+        div.container-fluid
+            div.navbar-header
+                div.navbar-toggle(data-toggle="collapse", data-target=".navbar-collapse")
+                    span.sr-only Toggle navigation
+                    i.fa.fa-bars
+                a.navbar-brand(href="#{baseurl}/"): span #{brand_name}
+
+            div.navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="#{baseurl}/") Home
+                    li.dropdown
+                        a.dropdown-toggle(href="#",data-toggle="dropdown") Test
+                            b.caret
+                        ul.dropdown-menu
+                            li: a(href="#{baseurl}/test/") Test home
+                            li: a(href="#{baseurl}/test/foo") Foo
+                            li: a(href="#{baseurl}/test/message") Add message
+                    li: a(href="#{baseurl}/new/") New
+                 ul.nav.navbar-nav.navbar-right.user-nav
+                     if session
+                        li.dropdown.profile_menu
+                            a.dropdown-toggle(href='#', data-toggle='dropdown')
+                                img#user-image(alt='Avatar', src='#{session.image}')
+                                span#username #{session.name}
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a#profile-link(href='#{session.link}') Profile
+                                li.divider
+                                li
+                                    a(href='/logout') Sign Out
+                     else
+                        li.dropdown.profile_menu.hidden
+                            a.dropdown-toggle(href='#', data-toggle='dropdown')
+                                img#user-image(alt='Avatar', src='')
+                                span#username
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a#profile-link(href='#') Profile
+                                li.divider
+                                li
+                                    a(href='/logout') Sign Out
+                        li.signup-button
+                             button.btn.btn-block.btn-trans.btn-github.bg.btn-rad.login-button(type='button', name='github')
+                                i.fa.fa-github
+                                    | Sign in with Github
+                        li.signup-button
+                             button.btn.btn-block.btn-trans.btn-meetup.bg.btn-rad.login-button(type='button', name='meetup')
+                                i.fa.fa-meetup
+                                    | Sign in with Meetup
